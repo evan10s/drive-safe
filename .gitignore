@@ -6,3 +6,4 @@ staticfiles
 
 # IntelliJ files
 .idea/
+*.iml
