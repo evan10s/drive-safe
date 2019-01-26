@@ -1,4 +1,5 @@
 # Getting setup locally
+1. Install git and clone this repository using `git clone https://github.com/evan10s/drive-safe.git`
 1. Install [node.js](https://nodejs.org/en/download/) on your computer.  This should also install a package manager called npm.
 2. Open a terminal in this directory.  Then run `npm install`<br>
     a. Windows only: When the package `gyp` is installed, you might get an error about `MSBUILD`.  If this happens, follow these
