@@ -12,8 +12,11 @@
     "express": "~4.14.0",
     "express-nunjucks": "^2.2.3",
     "morgan": "~1.7.0",
-    "node-sass-middleware": "0.9.8",
+    "npm": "^6.7.0",
     "nunjucks": "^3.1.7",
+    "passport": "^0.4.0",
+    "passport-automatic": "^1.2.1",
+    "semantic-ui": "^2.4.2",
     "serve-favicon": "~2.3.0"
   }
 }
