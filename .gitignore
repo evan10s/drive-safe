@@ -29,6 +29,8 @@ node_modules
 # Debug log from npm
 npm-debug.log
 
+# Semantic UI
+public/css/semantic
 
-# Mac files 
+# Mac files
 .DS_Store
