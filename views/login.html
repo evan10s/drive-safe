@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+{% block title %}Sign in{% endblock %}
+{% block content %}
+    <div class="six wide column centered">
+
+        <div data-controller="login" class="ui form large center aligned">
+
+            <h1>Sign in to continue</h1>
+            <form method="post" action="/login" class="log-in-form">
+
+
+                    <div class="ui hide error message">
+                        <p>Your username and password didn't match. Please try again.</p>
+                    </div>
+
+                        <div class="ui hide error message">
+                            <p>Access denied.</p>
+                        </div>
+
+                <div class="required field">
+                    <label>Username</label>
+                    <input type="text" name="username" placeholder="gpburdell">
+                </div>
+                <div class="required field">
+                    <label>Password</label>
+                    <input type="text" name="password">
+                </div>
+                <input type="hidden" name="next" value="/"/>
+                <div class="field">
+                    <input type="submit" class="ui button primary large" id="submit-btn" value="Continue"/>
+                </div>
+                <div class="field">
+                    <p class="text-center"><a href="">Forgot your password?</a></p>
+                </div>
+                <div class="field">
+                    <p class="text-center"><a href="">Don't have an account?</a></p>
+                </div>
+            </form>
+        </div>
+    </div>
+{% endblock %}

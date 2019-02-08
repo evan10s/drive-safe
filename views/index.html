@@ -1,12 +1,8 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <title>Hello World</title>
-        <link rel="stylesheet" href="/css/semantic/semantic.min.css" type="text/css" />
-    </head>
-    <body>
-    <p>Hello World -- index</p>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script src="/css/semantic/semantic.min.js" ></script>
-    </body>
-</html>
+{% extends 'base.html' %}
+{% block title %}Home{% endblock %}
+{% block content %}
+    <div class="ui centered six">
+        <h1>Welcome to Drive Safe!</h1>
+        <p>Hello World!!</p>
+    </div>
+{% endblock %}

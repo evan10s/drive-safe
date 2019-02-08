@@ -1,1 +1,10 @@
-Something's broken...
+{% extends 'base.html' %}
+{% block title %}That didn't work!{% endblock %}
+{% block content %}
+    <div class="twelve wide column centered">
+        <h1>Something's broken...</h1>
+        <h2>{{ error }}</h2>
+        <br>
+        <p>{{ message }}</p>
+    </div>
+{% endblock %}

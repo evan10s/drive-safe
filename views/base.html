@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{% block title %}{% endblock %} | Drive Safe</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+    <link href="/css/semantic/semantic.min.css" type="text/css" rel="stylesheet">
+    <script src="/bundle.js" async></script>
+</head>
+<body>
+{% include "nav.html" %}
+<div class="ui grid container stackable doubling">
+    {% block content %}
+        The content block for this page is not defined
+    {% endblock %}
+</div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="/css/semantic/semantic.min.js" ></script>
+{% block scripts %}
+{% endblock %}
+</body>
+</html>
