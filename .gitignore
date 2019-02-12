@@ -34,3 +34,6 @@ public/css/semantic
 
 # Mac files
 .DS_Store
+
+# .env
+.env

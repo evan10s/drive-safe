@@ -3,6 +3,29 @@
 {% block content %}
     <div class="ui centered six">
         <h1>Welcome to Drive Safe!</h1>
-        <p>Hello World!!</p>
+        <div>
+            <h2>My Trips</h2>
+            <table class="ui celled table">
+                <thead>
+                <tr><th>Start time</th>
+                    <th>Start address</th>
+                    <th>End time</th>
+                    <th>End address</th>
+                    <th>Hard breaks</th>
+                    <th>Hard accelerations</th>
+                </tr></thead>
+                <tbody>
+                {% for trip in trips %}
+                    <tr>
+                        <td data-label="Start time">{{ trip.started_at }}</td>
+                        <td data-label="Start address">{{ trip.start_address.display_name }}</td>
+                        <td data-label="End time">{{ trip.ended_at }}</td>
+                        <td data-label="End address">{{ trip.end_address.display_name }}</td>
+                        <td data-label="Hard brakes">{{ trip.hard_brakes }}</td>
+                        <td data-label="Hard accelerations">{{ trip.hard_accels }}</td>
+                    </tbody>
+                {% endfor %}
+            </table>
+        </div>
     </div>
 {% endblock %}
