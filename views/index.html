@@ -27,5 +27,16 @@
                 {% endfor %}
             </table>
         </div>
+        <h2>Scores (per 100 mi)</h2>
+    <div>
+        <p>Avg hard brakes: {{ hard_brakes_avg }} (-{{ deductions[1] }})</p>
+        <p>Avg hard accels: {{ hard_accels_avg }} (-{{ deductions[2] }})</p>
+        <p>Avg percent highway: {{ highway_avg }} (-{{ deductions[0] }})</p>
+        <p>Avg percent night: {{ night_avg }} (-{{ deductions[3] }})</p>
+        <p>Total distance: {{ total_distance }} mi</p>
+        <p>Total duration: {{ total_duration }} min</p>
+        <h1>Score:</h1>
+        <h2>{{ score }}</h2>
+    </div>
     </div>
 {% endblock %}
