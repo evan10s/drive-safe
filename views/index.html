@@ -4,8 +4,17 @@
     <div class="ui main text container">
         <h1 class="ui header center aligned">Your Driving Report</h1>
 
-        <h2>Trips Included In This Report: </h2>
-        <div>
+        <!--h2 class ="ui header center aligned">Trips Included In This Report: </h2-->
+<div class="ui vertical stripe segment">
+                    <table class="ui celled table">
+                <thead>
+                <tr><th>Trips</th>
+                    <th>Time Driven</th>
+                    <th>Miles driven</th>
+                </tr></thead>
+                </table>
+            </div>
+<!--         <div>
         <p>Avg hard brakes: {{ hard_brakes_avg }} (-{{ deductions[1] }})</p>
         <p>Avg hard accels: {{ hard_accels_avg }} (-{{ deductions[2] }})</p>
         <p>Avg percent highway: {{ highway_avg }} (-{{ deductions[0] }})</p>
@@ -14,7 +23,7 @@
         <p>Total duration: {{ total_duration }} min</p>
         <h1>Score:</h1>
         <h2>{{ score }}</h2>
-        </div>
+        </div> -->
 
     </div>
     <div class="ui aligned vertical stripe segment">
