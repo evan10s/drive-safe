@@ -63,6 +63,9 @@ router.get('/', async function (req, res, next) {
 
     console.log(deductions);
     let score = 100 - sum(deductions);
+
+    let letterGrade = "https://i.imgur.com/bp9ahda.png";
+    //if(score > 60) letterGrade = ""
     res.render('index', {
         request: req,
         highway_avg: highway_avg,
@@ -73,6 +76,7 @@ router.get('/', async function (req, res, next) {
         night_avg: night_avg,
         deductions: deductions,
         score: score.toFixed(2)
+        ,letterGrade: letterGrade
     });
 });
 
