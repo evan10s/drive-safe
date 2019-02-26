@@ -39,3 +39,5 @@ public/css/semantic
 .env
 *.psd
 *.png
+semantic/
+assets/
