@@ -63,12 +63,11 @@ router.get('/', async function (req, res, next) {
 
     console.log(deductions);
     let score = 100 - sum(deductions);
-    //let letterGrade = "F";
-    let letterGrade = "https://i.imgur.com/bp9ahda.png";
-    // if(score > 60) letterGrade = "D";
-    //  if(score > 70) letterGrade = "C";
-    //  if(score > 80) letterGrade = "B";
-    //  if(score > 90) letterGrade = "A";
+    let letterGrade = "https://i.imgur.com/GWJ2a2Y.png"; //F
+     if(score > 60 && score <= 70) letterGrade = "https://i.imgur.com/Smz9Wbg.png"; //D
+     if(score > 70 && score <= 80) letterGrade = "https://i.imgur.com/X66lskd.png"; //C
+     if(score > 80 && score <= 90) letterGrade = "https://i.imgur.com/OwjbEgo.png"; //B
+     if(score > 90) letterGrade = "https://i.imgur.com/IexnhBR.png"; //A
     res.render('index', {
         request: req,
         highway_avg: highway_avg,

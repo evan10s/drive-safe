@@ -37,3 +37,5 @@ public/css/semantic
 
 # .env
 .env
+*.psd
+*.png

@@ -3,8 +3,6 @@
 {% block content %}
     <div class="ui main text container">
         <h1 class="ui header center aligned">Your Driving Report</h1>
-
-        <!--h2 class ="ui header center aligned">Trips Included In This Report: </h2-->
 <div class="ui vertical stripe segment">
                     <table class="ui celled table">
                 <thead>
@@ -14,17 +12,6 @@
                 </tr></thead>
                 </table>
             </div>
-<!--         <div>
-        <p>Avg hard brakes: {{ hard_brakes_avg }} (-{{ deductions[1] }})</p>
-        <p>Avg hard accels: {{ hard_accels_avg }} (-{{ deductions[2] }})</p>
-        <p>Avg percent highway: {{ highway_avg }} (-{{ deductions[0] }})</p>
-        <p>Avg percent night: {{ night_avg }} (-{{ deductions[3] }})</p>
-        <p>Total distance: {{ total_distance }} mi</p>
-        <p>Total duration: {{ total_duration }} min</p>
-        <h1>Score:</h1>
-        <h2>{{ score }}</h2>
-        </div> -->
-
     </div>
     <div class="ui aligned vertical stripe segment">
     <div class="ui middle aligned stackable grid container">
@@ -42,29 +29,10 @@
 
         <div class="six wide right floated column">
           <img src="{{letterGrade}}" class="ui medium bordered rounded image centered" id="letterImg">
-          <!-- <div class="background-image"></div> -->
           <!-- <h2 class="ui center aligned header" id="drivingScore">Driving Score:</h2>
           <h4 class="ui center aligned header" id="letterScore">{{ letterGrade }}</h4> -->
         </div>
-<!--         <script type="text/javascript">
-            document.getElementById('letterImg').src = {letterGrade};
-            //document.getElementById('letterImg').src = "https://i.imgur.com/bp9ahda.png";
-        </script> -->
       </div>
-      <!-- <div class="row">
-            <div class="four wide column left aligned">
-          <h2>Top Three Risks</h2>
-            <p>Idling Time</p>
-            <p>Speed Variation</p>
-            <p>Following Distance</p>
-        </div>
-        <div class = "four wide left aligned column">
-            <h2>Recommendations</h2>
-            <p>1. Use a GPS, don't travel alone, stay close to home</p>
-            <p>2. Stay on surface roads</p>
-            <p>3. Visit a doctor for an eye exam</p>
-        </div>
-      </div> -->
       <div class="row">
         <div class="center aligned column">
           <a class="ui huge button">More Details</a>
