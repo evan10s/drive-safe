@@ -41,3 +41,4 @@ public/css/semantic
 *.png
 semantic/
 assets/
+jquery.min.js
