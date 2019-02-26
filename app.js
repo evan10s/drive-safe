@@ -109,7 +109,7 @@ passport.use(new AutomaticStrategy({
 app.get('/login',
     function (req, res) {
         console.log(req.user);
-        res.render('login');
+        res.render('login', { request: req });
     }
 );
 

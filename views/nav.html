@@ -6,6 +6,7 @@
           Biloba Tech
       </a>
       <a href="#" class="item">Home</a>
+        {% if request.user %}
       <div class="ui simple dropdown item">
         My Profile <i class="dropdown icon"></i>
         <div class="menu">
@@ -13,5 +14,6 @@
           <a class="item" href="#">Score Reports</a>
         </div>
       </div>
+        {% endif %}
     </div>
 </div>

@@ -3,69 +3,104 @@
 {% block content %}
     <div class="ui main text container">
         <h1 class="ui header center aligned">Your Driving Report</h1>
-<div class="ui vertical stripe segment">
-                    <table class="ui celled table">
+        <div class="ui vertical stripe segment">
+            <table class="ui celled table">
                 <thead>
-                <tr><th>Trips</th>
+                <tr>
+                    <th>Trips</th>
                     <th>Time Driven</th>
                     <th>Miles Driven</th>
-                </tr></thead>
-                </table>
-            </div>
+                </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>{{ num_trips }}</td>
+                        <td>{{ total_duration }}</td>
+                        <td>{{ total_distance }}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
     </div>
     <div class="ui aligned vertical stripe segment">
-    <div class="ui middle aligned stackable grid container">
-      <div class="row">
-        <div class="eight wide column ">
-          <h2>Scores (per 100 mi)</h2>
-          <p>Avg hard brakes: {{ hard_brakes_avg }} (-{{ deductions[1] }})</p>
-        <p>Avg hard accels: {{ hard_accels_avg }} (-{{ deductions[2] }})</p>
-        <p>Avg percent highway: {{ highway_avg }} (-{{ deductions[0] }})</p>
-        <p>Avg percent night: {{ night_avg }} (-{{ deductions[3] }})</p>
-        <p>Total distance: {{ total_distance }} mi</p>
-        <p>Total duration: {{ total_duration }} min</p>
-        <h3>Score: {{ score }}</h3>
-        </div>
+        <div class="ui middle aligned stackable grid container">
+            <div class="row">
+                <div class="eight wide column ">
+                    <table class="ui celled table">
+                        <thead>
+                            <th>Component</th>
+                            <th>Frequency</th>
+                            <th>Deduction</th>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Hard breaks</td>
+                                <td>{{ hard_brakes_avg }} per 100 mi</td>
+                                <td>-{{ deductions[1] }}</td>
+                            </tr>
+                            <tr>
+                                <td>Hard accelerations</td>
+                                <td>{{ hard_accels_avg }} per 100 mi</td>
+                                <td>-{{ deductions[2] }}</td>
+                            </tr>
+                            <tr>
+                                <td>Highway driving</td>
+                                <td>{{ highway_avg }}%</td>
+                                <td>-{{ deductions[0] }}</td>
+                            </tr>
+                            <tr>
+                                <td>Night driving</td>
+                                <td>{{ night_avg }}%</td>
+                                <td>-{{ deductions[3] }}</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Total</strong></td>
+                                <td><strong>{{ score }}</strong></td>
+                                <td></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
 
-        <div class="six wide right floated column">
-          <img src="{{letterGrade}}" class="ui medium bordered rounded image centered" id="letterImg">
-          <!-- <h2 class="ui center aligned header" id="drivingScore">Driving Score:</h2>
+                <div class="six wide right floated column">
+                    <img src="{{ letterGrade }}" class="ui medium bordered rounded image centered" id="letterImg">
+                    <!-- <h2 class="ui center aligned header" id="drivingScore">Driving Score:</h2>
           <h4 class="ui center aligned header" id="letterScore">{{ letterGrade }}</h4> -->
+                </div>
+            </div>
+            <div class="row">
+                <div class="center aligned column">
+                    <a class="ui huge button">More Details</a>
+                </div>
+            </div>
         </div>
-      </div>
-      <div class="row">
-        <div class="center aligned column">
-          <a class="ui huge button">More Details</a>
-        </div>
-      </div>
     </div>
-  </div>
 
     <div class="ui  aligned vertical stripe segment">
-    <div class="ui middle aligned stackable grid container">
-      <div class="row">
-        <div class="eight wide column right aligned">
-          <h2>Top Three Risks</h2>
-            <p>Idling Time</p>
-            <p><br></p>
-            <p><br></p>
-            <p>Speed Variation</p>
-            <p>Following Distance</p>
+        <div class="ui middle aligned stackable grid container">
+            <div class="row">
+                <div class="eight wide column right aligned">
+                    <h2>Top Three Risks</h2>
+                    <p>Idling Time</p>
+                    <p><br></p>
+                    <p><br></p>
+                    <p>Speed Variation</p>
+                    <p>Following Distance</p>
+                </div>
+                <div class="eight wide left aligned column">
+                    <h2>Recommendations</h2>
+                    <p>1. Use a GPS</p>
+                    <p>2. Don't travel alone</p>
+                    <p>3. Stay close to home</p>
+                    <p>Stay on surface roads</p>
+                    <p>Visit a doctor for an eye exam</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="center aligned column">
+                    <a class="ui huge button">See More</a>
+                </div>
+            </div>
         </div>
-        <div class = "eight wide left aligned column">
-            <h2>Recommendations</h2>
-            <p>1. Use a GPS</p>
-            <p>2. Don't travel alone</p>
-            <p>3. Stay close to home</p>
-            <p>Stay on surface roads</p>
-            <p>Visit a doctor for an eye exam</p>
-        </div>
-      </div>
-      <div class="row">
-        <div class="center aligned column">
-          <a class="ui huge button">See More</a>
-        </div>
-      </div>
     </div>
-  </div>
 {% endblock %}

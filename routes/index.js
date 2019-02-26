@@ -46,39 +46,39 @@ router.get('/', async function (req, res, next) {
         page++;
     }
 
-    console.log("Hard brakes average: ", sum(hard_brakes) / hard_brakes.length);
-    console.log("Highway percentage average: ", sum(highway_fractions) / highway_fractions.length);
-    let total_distance = (sum(distances) / distances.length * 0.000621371).toFixed(2);
+    let total_distance = sum(distances) / 1609.344;
     let extrapolation = 100 / total_distance;
-    let highway_avg = (sum(highway_fractions) / highway_fractions.length).toFixed(2);
-    let hard_brakes_avg = (sum(hard_brakes) / hard_brakes.length * extrapolation).toFixed(2);
-    let hard_accels_avg = (sum(hard_accels) / hard_accels.length * extrapolation).toFixed(2);
+    let highway_avg = (sum(highway_fractions) / highway_fractions.length);
+    let hard_brakes_avg = (sum(hard_brakes) * extrapolation);
+    let hard_accels_avg = (sum(hard_accels) * extrapolation);
 
-    let total_duration = (sum(durations) / durations.length / 60).toFixed(2);
-    let night_avg = (sum(night_fractions) / night_fractions.length).toFixed(2);
+    let total_duration = (sum(durations) / durations.length / 60);
+    let night_avg = (sum(night_fractions) / night_fractions.length);
     let scoreable = [highway_avg, hard_brakes_avg, hard_accels_avg, night_avg];
 
     let weights = [25, 5, 5, 50];
-    let deductions = scoreable.map((value, index, array) => value*weights[index]);
+    let deductions = scoreable.map((value, index, array) => (value*weights[index]));
 
-    console.log(deductions);
     let score = 100 - sum(deductions);
+    deductions = deductions.map( v => v.toFixed(2));
     let letterGrade = "https://i.imgur.com/GWJ2a2Y.png"; //F
      if(score > 60 && score <= 70) letterGrade = "https://i.imgur.com/Smz9Wbg.png"; //D
      if(score > 70 && score <= 80) letterGrade = "https://i.imgur.com/X66lskd.png"; //C
      if(score > 80 && score <= 90) letterGrade = "https://i.imgur.com/OwjbEgo.png"; //B
      if(score > 90) letterGrade = "https://i.imgur.com/IexnhBR.png"; //A
+
     res.render('index', {
         request: req,
-        highway_avg: highway_avg,
-        hard_brakes_avg: hard_brakes_avg,
-        hard_accels_avg: hard_accels_avg,
-        total_distance: total_distance,
-        total_duration: total_duration,
-        night_avg: night_avg,
+        highway_avg: (highway_avg * 100).toFixed(2),
+        hard_brakes_avg: hard_brakes_avg.toFixed(2),
+        hard_accels_avg: hard_accels_avg.toFixed(2),
+        total_distance: total_distance.toFixed(2),
+        total_duration: total_duration.toFixed(2),
+        night_avg: (night_avg * 100).toFixed(2),
         deductions: deductions,
-        score: score.toFixed(2)
-        ,letterGrade: letterGrade
+        score: score.toFixed(2),
+        num_trips: distances.length,
+        letterGrade: letterGrade
     });
 });
 
