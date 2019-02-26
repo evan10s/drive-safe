@@ -1,42 +1,71 @@
 {% extends 'base.html' %}
 {% block title %}Home{% endblock %}
 {% block content %}
-    <div class="ui centered six">
-        <h1>Welcome to Drive Safe!</h1>
-        <div>
-            <h2>My Trips</h2>
-            <table class="ui celled table">
+    <div class="ui main text container">
+        <h1 class="ui header center aligned">Your Driving Report</h1>
+<div class="ui vertical stripe segment">
+                    <table class="ui celled table">
                 <thead>
-                <tr><th>Start time</th>
-                    <th>Start address</th>
-                    <th>End time</th>
-                    <th>End address</th>
-                    <th>Hard breaks</th>
-                    <th>Hard accelerations</th>
+                <tr><th>Trips</th>
+                    <th>Time Driven</th>
+                    <th>Miles Driven</th>
                 </tr></thead>
-                <tbody>
-                {% for trip in trips %}
-                    <tr>
-                        <td data-label="Start time">{{ trip.started_at }}</td>
-                        <td data-label="Start address">{{ trip.start_address.display_name }}</td>
-                        <td data-label="End time">{{ trip.ended_at }}</td>
-                        <td data-label="End address">{{ trip.end_address.display_name }}</td>
-                        <td data-label="Hard brakes">{{ trip.hard_brakes }}</td>
-                        <td data-label="Hard accelerations">{{ trip.hard_accels }}</td>
-                    </tbody>
-                {% endfor %}
-            </table>
-        </div>
-        <h2>Scores (per 100 mi)</h2>
-    <div>
-        <p>Avg hard brakes: {{ hard_brakes_avg }} (-{{ deductions[1] }})</p>
+                </table>
+            </div>
+    </div>
+    <div class="ui aligned vertical stripe segment">
+    <div class="ui middle aligned stackable grid container">
+      <div class="row">
+        <div class="eight wide column ">
+          <h2>Scores (per 100 mi)</h2>
+          <p>Avg hard brakes: {{ hard_brakes_avg }} (-{{ deductions[1] }})</p>
         <p>Avg hard accels: {{ hard_accels_avg }} (-{{ deductions[2] }})</p>
         <p>Avg percent highway: {{ highway_avg }} (-{{ deductions[0] }})</p>
         <p>Avg percent night: {{ night_avg }} (-{{ deductions[3] }})</p>
         <p>Total distance: {{ total_distance }} mi</p>
         <p>Total duration: {{ total_duration }} min</p>
-        <h1>Score:</h1>
-        <h2>{{ score }}</h2>
+        <h3>Score: {{ score }}</h3>
+        </div>
+
+        <div class="six wide right floated column">
+          <img src="{{letterGrade}}" class="ui medium bordered rounded image centered" id="letterImg">
+          <!-- <h2 class="ui center aligned header" id="drivingScore">Driving Score:</h2>
+          <h4 class="ui center aligned header" id="letterScore">{{ letterGrade }}</h4> -->
+        </div>
+      </div>
+      <div class="row">
+        <div class="center aligned column">
+          <a class="ui huge button">More Details</a>
+        </div>
+      </div>
     </div>
+  </div>
+
+    <div class="ui  aligned vertical stripe segment">
+    <div class="ui middle aligned stackable grid container">
+      <div class="row">
+        <div class="eight wide column right aligned">
+          <h2>Top Three Risks</h2>
+            <p>Idling Time</p>
+            <p><br></p>
+            <p><br></p>
+            <p>Speed Variation</p>
+            <p>Following Distance</p>
+        </div>
+        <div class = "eight wide left aligned column">
+            <h2>Recommendations</h2>
+            <p>1. Use a GPS</p>
+            <p>2. Don't travel alone</p>
+            <p>3. Stay close to home</p>
+            <p>Stay on surface roads</p>
+            <p>Visit a doctor for an eye exam</p>
+        </div>
+      </div>
+      <div class="row">
+        <div class="center aligned column">
+          <a class="ui huge button">See More</a>
+        </div>
+      </div>
     </div>
+  </div>
 {% endblock %}

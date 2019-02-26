@@ -37,3 +37,8 @@ public/css/semantic
 
 # .env
 .env
+*.psd
+*.png
+semantic/
+assets/
+jquery.min.js

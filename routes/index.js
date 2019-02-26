@@ -63,6 +63,11 @@ router.get('/', async function (req, res, next) {
 
     console.log(deductions);
     let score = 100 - sum(deductions);
+    let letterGrade = "https://i.imgur.com/GWJ2a2Y.png"; //F
+     if(score > 60 && score <= 70) letterGrade = "https://i.imgur.com/Smz9Wbg.png"; //D
+     if(score > 70 && score <= 80) letterGrade = "https://i.imgur.com/X66lskd.png"; //C
+     if(score > 80 && score <= 90) letterGrade = "https://i.imgur.com/OwjbEgo.png"; //B
+     if(score > 90) letterGrade = "https://i.imgur.com/IexnhBR.png"; //A
     res.render('index', {
         request: req,
         highway_avg: highway_avg,
@@ -73,6 +78,7 @@ router.get('/', async function (req, res, next) {
         night_avg: night_avg,
         deductions: deductions,
         score: score.toFixed(2)
+        ,letterGrade: letterGrade
     });
 });
 
