@@ -2,7 +2,7 @@
 {% block title %}Home{% endblock %}
 {% block content %}
     <div class="ui main text container">
-        <h1 class="ui header center aligned">Your Driving Report</h1>
+        <h1 class="ui header center aligned">Your Driving Report - Last 30 Days</h1>
         <div class="ui vertical stripe segment">
             <table class="ui celled table">
                 <thead>
@@ -13,11 +13,11 @@
                 </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td>{{ num_trips }}</td>
-                        <td>{{ total_duration }}</td>
-                        <td>{{ total_distance }}</td>
-                    </tr>
+                <tr>
+                    <td>{{ num_trips }}</td>
+                    <td>{{ total_duration.hours }}:{{ total_duration.minutes }} hrs</td>
+                    <td>{{ total_distance }}</td>
+                </tr>
                 </tbody>
             </table>
         </div>
@@ -28,36 +28,75 @@
                 <div class="eight wide column ">
                     <table class="ui celled table">
                         <thead>
-                            <th>Component</th>
-                            <th>Frequency</th>
-                            <th>Deduction</th>
+                        <tr>
+                            <th>Time of day</th>
+                            <th>Percent of driving</th>
+                            <th>Score</th>
+                        </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td>Hard breaks</td>
-                                <td>{{ hard_brakes_avg }} per 100 mi</td>
-                                <td>-{{ deductions[1] }}</td>
-                            </tr>
-                            <tr>
-                                <td>Hard accelerations</td>
-                                <td>{{ hard_accels_avg }} per 100 mi</td>
-                                <td>-{{ deductions[2] }}</td>
-                            </tr>
-                            <tr>
-                                <td>Highway driving</td>
-                                <td>{{ highway_avg }}%</td>
-                                <td>-{{ deductions[0] }}</td>
-                            </tr>
-                            <tr>
-                                <td>Night driving</td>
-                                <td>{{ night_avg }}%</td>
-                                <td>-{{ deductions[3] }}</td>
-                            </tr>
-                            <tr>
-                                <td><strong>Total</strong></td>
-                                <td><strong>{{ score }}</strong></td>
-                                <td></td>
-                            </tr>
+                        <tr>
+                            <td>Day</td>
+                            <td>{{ data.day.percent_100 }}%</td>
+                            <td>{{ data.day.score }}</td>
+                        </tr>
+                        <tr>
+                            <td>Night</td>
+                            <td>{{ data.night.percent_100 }}%</td>
+                            <td>{{ data.night.score }}</td>
+                        </tr>
+                        <tr>
+                            <td><h3 class="ui center aligned header">Total</h3></td>
+                            <td colspan="2"><h3 class="ui center aligned header">{{ data.score }}</h3></td>
+                        </tr>
+                        </tbody>
+                    </table>
+                    <table class="ui celled table">
+                        <thead>
+                        <tr>
+                            <th rowspan="2">Component</th>
+                            <th colspan="4" class="ui center aligned">Time of day</th>
+                        </tr>
+                        <tr>
+                            <th>Day</th>
+                            <th>Deductions</th>
+                            <th>Night</th>
+                            <th>Deductions</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td>Distance driven</td>
+                            <td>{{ data.day.distance }} mi ({{ data.day.percent_100 }}%)</td>
+                            <td>{% if data.day.deductions.distance > 0 %}
+                                -{% endif %}{{ data.day.deductions.distance }}</td>
+                            <td>{{ data.night.distance }} mi ({{ data.night.percent_100 }}%)</td>
+                            <td>{% if data.night.deductions.distance > 0 %}
+                                -{% endif %}{{ data.night.deductions.distance }}</td>
+                        </tr>
+                        <tr>
+                            <td>Hard brakes</td>
+                            <td>{{ data.day.hard_brakes_avg }} per 100 mi</td>
+                            <td>{% if data.day.deductions.hard_brakes > 0 %}
+                                -{% endif %}{{ data.day.deductions.hard_brakes }}</td>
+                            <td>{{ data.night.hard_brakes_avg }}</td>
+                            <td>{% if data.night.deductions.hard_brakes > 0 %}
+                                -{% endif %}{{ data.night.deductions.hard_brakes }}</td>
+                        </tr>
+                        <tr>
+                            <td>Hard accelerations</td>
+                            <td>{{ data.day.hard_accels_avg }}</td>
+                            <td>{% if data.day.deductions.hard_accels > 0 %}
+                                -{% endif %}{{ data.day.deductions.hard_accels }}</td>
+                            <td>{{ data.night.hard_accels_avg }}</td>
+                            <td>{% if data.night.deductions.hard_accels > 0 %}
+                                -{% endif %}{{ data.night.deductions.hard_accels }}</td>
+                        </tr>
+                        <tr>
+                            <td><h3 class="ui center aligned header">Subscores</h3></td>
+                            <td colspan="2"><h4 class="ui center aligned header">{{ data.day.score }}</h4></td>
+                            <td colspan="2"><h4 class="ui center aligned header">{{ data.night.score }}</h4></td>
+                        </tr>
                         </tbody>
                     </table>
                 </div>
